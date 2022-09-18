@@ -9,11 +9,14 @@ namespace FizzBuzz.Core
     public class FizzBuzz : IFizzBuzz
     {
         private readonly Predicate<int> _isFizz;
+        private readonly Predicate<int> _isBuzz;
 
-        public FizzBuzz(Predicate<int> isFizz)
+        public FizzBuzz(Predicate<int> isFizz, Predicate<int> isBuzz)
         {
             _isFizz = isFizz;
+            _isBuzz = isBuzz;
         }
+
         public IEnumerable<string> GetNumbers()
         {
             var numbers = new List<string>();
@@ -23,6 +26,12 @@ namespace FizzBuzz.Core
                 if (_isFizz.Invoke(i))
                 {
                     numbers.Add("Fizz");
+                    continue;
+                }
+
+                if (_isBuzz.Invoke(i))
+                {
+                    numbers.Add("Buzz");
                     continue;
                 }
 

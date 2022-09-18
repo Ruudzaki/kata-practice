@@ -11,12 +11,17 @@ namespace FizzBuzz.Core
         private readonly IFizzBuzz _fizzBuzz;
         public FizzBuzzProxy()
         {
-            _fizzBuzz = new FizzBuzz(IsFizz);
+            _fizzBuzz = new FizzBuzz(IsFizz, IsBuzz);
         }
 
         private bool IsFizz(int i)
         {
             return i % 3 == 0;
+        }
+
+        private bool IsBuzz(int i)
+        {
+            return i % 5 == 0;
         }
 
         public IEnumerable<string> GetNumbers()
