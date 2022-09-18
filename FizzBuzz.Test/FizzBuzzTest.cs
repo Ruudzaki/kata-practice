@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using FizzBuzz.Core;
 using NUnit.Framework;
 
@@ -7,7 +8,6 @@ namespace FizzBuzz.Test
 {
     public class FizzBuzzTest
     {
-
         [Test]
         public void SimpleGetNumbers_NoParameters_ListOfIntFrom1to100()
         {
@@ -19,17 +19,26 @@ namespace FizzBuzz.Test
             CollectionAssert.AreEqual(expectedNumbers, actual);
         }
 
-
-
-        [Test]
-        public void ProxyGetNumbers_NoParameters_ListOfIntFrom1to100()
+        [TestCase(3)]
+        [TestCase(6)]
+        public void ProxyGetNumbers_NoParameters_ListOfIntFrom1to100(int i)
         {
-            IFizzBuzz fizzBuzz = new FizzBuzzProxy();
-            IEnumerable<string> expectedNumbers = GetExpectedNumbers();
+            IFizzBuzz fizzBuzz = new FizzBuzzFizz();
 
             IEnumerable<string> actual = fizzBuzz.GetNumbers();
 
-            CollectionAssert.AreEqual(expectedNumbers, actual);
+            Assert.AreEqual("Fizz", actual.ToArray()[--i]);
+        }
+
+        [TestCase(3)]
+        [TestCase(6)]
+        public void FizzGetNumbers_NoParameters_Each3rdIsFizz(int i)
+        {
+            IFizzBuzz fizzBuzz = new FizzBuzzFizz();
+
+            IEnumerable<string> actual = fizzBuzz.GetNumbers();
+
+            Assert.AreEqual("Fizz", actual.ToArray()[--i]);
         }
 
         private static List<string> GetExpectedNumbers()

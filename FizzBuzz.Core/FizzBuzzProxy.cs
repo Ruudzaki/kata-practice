@@ -11,7 +11,7 @@ namespace FizzBuzz.Core
         private IFizzBuzz fizzBuzz;
         public FizzBuzzProxy()
         {
-            fizzBuzz = new FizzBuzzSimple();
+            fizzBuzz = new FizzBuzzFizz();
         }
 
         public IEnumerable<string> GetNumbers()
