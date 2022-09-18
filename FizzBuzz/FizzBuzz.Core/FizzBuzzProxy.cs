@@ -8,10 +8,10 @@ namespace FizzBuzz.Core
 {
     public class FizzBuzzProxy : IFizzBuzz
     {
-        private IFizzBuzz fizzBuzz;
+        private readonly IFizzBuzz _fizzBuzz;
         public FizzBuzzProxy()
         {
-            fizzBuzz = new FizzBuzzFizz(IsFizz);
+            _fizzBuzz = new FizzBuzz(IsFizz);
         }
 
         private bool IsFizz(int i)
@@ -21,7 +21,7 @@ namespace FizzBuzz.Core
 
         public IEnumerable<string> GetNumbers()
         {
-            return fizzBuzz.GetNumbers();
+            return _fizzBuzz.GetNumbers();
         }
     }
 }

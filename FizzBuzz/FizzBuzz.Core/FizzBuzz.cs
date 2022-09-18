@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace FizzBuzz.Core
 {
-    public class FizzBuzzFizz : IFizzBuzz
+    public class FizzBuzz : IFizzBuzz
     {
-        private readonly Predicate<int> _isFizzPredicate;
+        private readonly Predicate<int> _isFizz;
 
-        public FizzBuzzFizz(Predicate<int> isFizz)
+        public FizzBuzz(Predicate<int> isFizz)
         {
-            _isFizzPredicate = isFizz;
+            _isFizz = isFizz;
         }
         public IEnumerable<string> GetNumbers()
         {
@@ -20,7 +20,7 @@ namespace FizzBuzz.Core
 
             for (int i = 1; i <= 100; i++)
             {
-                if (IsFizz(i))
+                if (_isFizz.Invoke(i))
                 {
                     numbers.Add("Fizz");
                     continue;
@@ -30,11 +30,6 @@ namespace FizzBuzz.Core
             }
 
             return numbers;
-        }
-
-        private bool IsFizz(int i)
-        {
-            return _isFizzPredicate.Invoke(i);
         }
     }
 }
