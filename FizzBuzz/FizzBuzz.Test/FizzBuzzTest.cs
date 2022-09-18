@@ -41,6 +41,17 @@ namespace FizzBuzz.Test
             Assert.AreEqual("Buzz", actual.ToArray()[--i]);
         }
 
+        [TestCase(15)]
+        [TestCase(30)]
+        public void ProxyGetNumbers_NoParameters_Each15thIsFizzBuzz(int i)
+        {
+            IFizzBuzz fizzBuzz = new FizzBuzzProxy();
+
+            IEnumerable<string> actual = fizzBuzz.GetNumbers();
+
+            Assert.AreEqual("FizzBuzz", actual.ToArray()[--i]);
+        }
+
         private static List<string> GetExpectedNumbers()
         {
             var expectedNumbers = new List<string>();

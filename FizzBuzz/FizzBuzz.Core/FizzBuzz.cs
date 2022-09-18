@@ -23,6 +23,12 @@ namespace FizzBuzz.Core
 
             for (int i = 1; i <= 100; i++)
             {
+                if (_isFizz.Invoke(i) && _isBuzz.Invoke(i))
+                {
+                    numbers.Add("FizzBuzz");
+                    continue;
+                }
+
                 if (_isFizz.Invoke(i))
                 {
                     numbers.Add("Fizz");
