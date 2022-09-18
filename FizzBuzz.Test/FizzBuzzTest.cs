@@ -23,18 +23,7 @@ namespace FizzBuzz.Test
         [TestCase(6)]
         public void ProxyGetNumbers_NoParameters_ListOfIntFrom1to100(int i)
         {
-            IFizzBuzz fizzBuzz = new FizzBuzzFizz();
-
-            IEnumerable<string> actual = fizzBuzz.GetNumbers();
-
-            Assert.AreEqual("Fizz", actual.ToArray()[--i]);
-        }
-
-        [TestCase(3)]
-        [TestCase(6)]
-        public void FizzGetNumbers_NoParameters_Each3rdIsFizz(int i)
-        {
-            IFizzBuzz fizzBuzz = new FizzBuzzFizz();
+            IFizzBuzz fizzBuzz = new FizzBuzzProxy();
 
             IEnumerable<string> actual = fizzBuzz.GetNumbers();
 
