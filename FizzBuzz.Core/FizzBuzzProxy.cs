@@ -14,7 +14,7 @@ namespace FizzBuzz.Core
             fizzBuzz = new FizzBuzzSimple();
         }
 
-        public IEnumerable<int> GetNumbers()
+        public IEnumerable<string> GetNumbers()
         {
             return fizzBuzz.GetNumbers();
         }

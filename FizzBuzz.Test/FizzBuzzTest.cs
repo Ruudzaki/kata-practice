@@ -12,34 +12,36 @@ namespace FizzBuzz.Test
         public void SimpleGetNumbers_NoParameters_ListOfIntFrom1to100()
         {
             IFizzBuzz fizzBuzz = new FizzBuzzSimple();
+            IEnumerable<string> expectedNumbers = GetExpectedNumbers();
 
-            var expectedNumbers = new List<int>();
-
-            for (int i = 1; i <= 100; i++)
-            {
-                expectedNumbers.Add(i);
-            }
-
-            IEnumerable<int> actual = fizzBuzz.GetNumbers();
+            IEnumerable<string> actual = fizzBuzz.GetNumbers();
 
             CollectionAssert.AreEqual(expectedNumbers, actual);
         }
+
+
 
         [Test]
         public void ProxyGetNumbers_NoParameters_ListOfIntFrom1to100()
         {
             IFizzBuzz fizzBuzz = new FizzBuzzProxy();
+            IEnumerable<string> expectedNumbers = GetExpectedNumbers();
 
-            var expectedNumbers = new List<int>();
+            IEnumerable<string> actual = fizzBuzz.GetNumbers();
+
+            CollectionAssert.AreEqual(expectedNumbers, actual);
+        }
+
+        private static List<string> GetExpectedNumbers()
+        {
+            var expectedNumbers = new List<string>();
 
             for (int i = 1; i <= 100; i++)
             {
-                expectedNumbers.Add(i);
+                expectedNumbers.Add(i.ToString());
             }
 
-            IEnumerable<int> actual = fizzBuzz.GetNumbers();
-
-            CollectionAssert.AreEqual(expectedNumbers, actual);
+            return expectedNumbers;
         }
     }
 }

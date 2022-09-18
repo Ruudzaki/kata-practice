@@ -8,6 +8,6 @@ namespace FizzBuzz.Core
 {
     public interface IFizzBuzz
     {
-        public IEnumerable<int> GetNumbers();
+        public IEnumerable<string> GetNumbers();
     }
 }

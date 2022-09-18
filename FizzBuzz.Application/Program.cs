@@ -2,7 +2,7 @@
 
 IFizzBuzz fizzBuzz = new FizzBuzzProxy();
 
-var numbers = fizzBuzz.GetNumbers();
+IEnumerable<string> numbers = fizzBuzz.GetNumbers();
 
 foreach (var number in numbers)
 {
