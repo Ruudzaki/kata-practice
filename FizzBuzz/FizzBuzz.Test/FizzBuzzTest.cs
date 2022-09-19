@@ -52,5 +52,26 @@ namespace FizzBuzz.Test
 
             Assert.AreEqual("Fizz", actual.ToArray()[--i]);
         }
+
+        [TestCase(52)]
+        [TestCase(56)]
+        public void GetNumbers_NoParameters_EachContains5IsBuzz(int i)
+        {
+            IFizzBuzz fizzBuzz = new Core.FizzBuzz(FizzBuzzRules.IsFizz, FizzBuzzRules.IsBuzz);
+
+            IEnumerable<string> actual = fizzBuzz.GetNumbers();
+
+            Assert.AreEqual("Buzz", actual.ToArray()[--i]);
+        }
+
+        [TestCase(53)]
+        public void GetNumbers_NoParameters_EachContains5And3IsFizzBuzz(int i)
+        {
+            IFizzBuzz fizzBuzz = new Core.FizzBuzz(FizzBuzzRules.IsFizz, FizzBuzzRules.IsBuzz);
+
+            IEnumerable<string> actual = fizzBuzz.GetNumbers();
+
+            Assert.AreEqual("FizzBuzz", actual.ToArray()[--i]);
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace FizzBuzz.Core
 
         public static bool IsBuzz(int number)
         {
-            return IsDivisibleBy5(number);
+            return IsDivisibleBy5(number) || IsContaining5(number);
         }
 
         private static bool IsDivisibleBy3(int number)
@@ -34,7 +34,15 @@ namespace FizzBuzz.Core
             {
                 if (digit == '3') return true;
             }
+            return false;
+        }
 
+        private static bool IsContaining5(int number)
+        {
+            foreach (var digit in number.ToString())
+            {
+                if (digit == '5') return true;
+            }
             return false;
         }
     }
