@@ -11,7 +11,7 @@ namespace FizzBuzz.Test
 
         [TestCase(3)]
         [TestCase(6)]
-        public void ProxyGetNumbers_NoParameters_Each3rdIsFizz(int i)
+        public void GetNumbers_NoParameters_Each3rdIsFizz(int i)
         {
             IFizzBuzz fizzBuzz = new Core.FizzBuzz(FizzBuzzRules.IsFizz, FizzBuzzRules.IsBuzz);
 
@@ -22,7 +22,7 @@ namespace FizzBuzz.Test
 
         [TestCase(5)]
         [TestCase(10)]
-        public void ProxyGetNumbers_NoParameters_Each5thIsBuzz(int i)
+        public void GetNumbers_NoParameters_Each5thIsBuzz(int i)
         {
             IFizzBuzz fizzBuzz = new Core.FizzBuzz(FizzBuzzRules.IsFizz, FizzBuzzRules.IsBuzz);
 
@@ -33,13 +33,24 @@ namespace FizzBuzz.Test
 
         [TestCase(15)]
         [TestCase(30)]
-        public void ProxyGetNumbers_NoParameters_Each15thIsFizzBuzz(int i)
+        public void GetNumbers_NoParameters_Each15thIsFizzBuzz(int i)
         {
             IFizzBuzz fizzBuzz = new Core.FizzBuzz(FizzBuzzRules.IsFizz, FizzBuzzRules.IsBuzz);
 
             IEnumerable<string> actual = fizzBuzz.GetNumbers();
 
             Assert.AreEqual("FizzBuzz", actual.ToArray()[--i]);
+        }
+
+        [TestCase(13)]
+        [TestCase(23)]
+        public void GetNumbers_NoParameters_EachContains3IsFizz(int i)
+        {
+            IFizzBuzz fizzBuzz = new Core.FizzBuzz(FizzBuzzRules.IsFizz, FizzBuzzRules.IsBuzz);
+
+            IEnumerable<string> actual = fizzBuzz.GetNumbers();
+
+            Assert.AreEqual("Fizz", actual.ToArray()[--i]);
         }
     }
 }
