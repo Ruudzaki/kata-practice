@@ -13,7 +13,7 @@ namespace FizzBuzz.Test
         [TestCase(6)]
         public void GetNumbers_NoParameters_Each3rdIsFizz(int i)
         {
-            IFizzBuzz fizzBuzz = new Core.FizzBuzz(FizzBuzzRules.IsFizz, FizzBuzzRules.IsBuzz);
+            IFizzBuzz fizzBuzz = FizzBuzzFactory.Create();
 
             IEnumerable<string> actual = fizzBuzz.GetNumbers();
 
@@ -24,7 +24,7 @@ namespace FizzBuzz.Test
         [TestCase(10)]
         public void GetNumbers_NoParameters_Each5thIsBuzz(int i)
         {
-            IFizzBuzz fizzBuzz = new Core.FizzBuzz(FizzBuzzRules.IsFizz, FizzBuzzRules.IsBuzz);
+            IFizzBuzz fizzBuzz = FizzBuzzFactory.Create();
 
             IEnumerable<string> actual = fizzBuzz.GetNumbers();
 
@@ -35,7 +35,7 @@ namespace FizzBuzz.Test
         [TestCase(30)]
         public void GetNumbers_NoParameters_Each15thIsFizzBuzz(int i)
         {
-            IFizzBuzz fizzBuzz = new Core.FizzBuzz(FizzBuzzRules.IsFizz, FizzBuzzRules.IsBuzz);
+            IFizzBuzz fizzBuzz = FizzBuzzFactory.Create();
 
             IEnumerable<string> actual = fizzBuzz.GetNumbers();
 
@@ -46,7 +46,7 @@ namespace FizzBuzz.Test
         [TestCase(23)]
         public void GetNumbers_NoParameters_EachContains3IsFizz(int i)
         {
-            IFizzBuzz fizzBuzz = new Core.FizzBuzz(FizzBuzzRules.IsFizz, FizzBuzzRules.IsBuzz);
+            IFizzBuzz fizzBuzz = FizzBuzzFactory.Create();
 
             IEnumerable<string> actual = fizzBuzz.GetNumbers();
 
@@ -57,7 +57,7 @@ namespace FizzBuzz.Test
         [TestCase(56)]
         public void GetNumbers_NoParameters_EachContains5IsBuzz(int i)
         {
-            IFizzBuzz fizzBuzz = new Core.FizzBuzz(FizzBuzzRules.IsFizz, FizzBuzzRules.IsBuzz);
+            IFizzBuzz fizzBuzz = FizzBuzzFactory.Create();
 
             IEnumerable<string> actual = fizzBuzz.GetNumbers();
 
@@ -67,7 +67,17 @@ namespace FizzBuzz.Test
         [TestCase(53)]
         public void GetNumbers_NoParameters_EachContains5And3IsFizzBuzz(int i)
         {
-            IFizzBuzz fizzBuzz = new Core.FizzBuzz(FizzBuzzRules.IsFizz, FizzBuzzRules.IsBuzz);
+            IFizzBuzz fizzBuzz = FizzBuzzFactory.Create();
+
+            IEnumerable<string> actual = fizzBuzz.GetNumbers();
+
+            Assert.AreEqual("FizzBuzz", actual.ToArray()[--i]);
+        }
+
+        [TestCase(51)]
+        public void GetNumbers_NoParameters_Each3rdAndContains5IsFizzBuzz(int i)
+        {
+            IFizzBuzz fizzBuzz = FizzBuzzFactory.Create();
 
             IEnumerable<string> actual = fizzBuzz.GetNumbers();
 

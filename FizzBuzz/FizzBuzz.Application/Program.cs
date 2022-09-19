@@ -1,6 +1,6 @@
 ﻿using FizzBuzz.Core;
 
-IFizzBuzz fizzBuzz = new FizzBuzz.Core.FizzBuzz(FizzBuzzRules.IsFizz, FizzBuzzRules.IsBuzz);
+IFizzBuzz fizzBuzz = FizzBuzzFactory.Create();
 
 IEnumerable<string> numbers = fizzBuzz.GetNumbers();
 
