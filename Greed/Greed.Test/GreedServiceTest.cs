@@ -6,15 +6,15 @@ namespace Greed.Test
 {
     public class GreedServiceTest
     {
-
-        [Test]
-        public void RollDices_5_ListOf5Numbers()
+        
+        [TestCase(5, ExpectedResult = 5)]
+        public int RollDices_5_ListOf5Numbers(int count)
         {
             var service = new GreedService();
 
-            IList<int> numbers = service.RollDices();
+            IList<int> numbers = service.RollDices(count);
 
-            Assert.AreEqual(5, numbers.Count);
+            return numbers.Count;
         }
     }
 }
